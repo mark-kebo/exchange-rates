@@ -12,21 +12,7 @@ class EntitiesManager {
     
     static let shared = EntitiesManager()
     
-    private var countries: [CountryInfo] = []
-
     private init() {
-        CountryKeys.allCases.forEach {
-            let country = CountryInfo()
-            country.name = $0.value
-            country.code = $0.key
-            country.isSelected = false
-            country.pair = nil
-            countries.append(country)
-        }
-    }
-    
-    func getCountries() -> [CountryInfo] {
-        return countries
     }
     
 }

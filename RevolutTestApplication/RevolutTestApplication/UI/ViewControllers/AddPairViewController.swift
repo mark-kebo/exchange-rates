@@ -14,13 +14,19 @@ class AddPairViewController: UIViewController {
         
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: false)
         addPairLabel.text = L10n.AddScreen.Label.addPair
         addPairButton.setTitle(L10n.AddScreen.Button.addPair, for: .normal)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isToolbarHidden = true
     }
 
     @IBAction func addAction(_ sender: Any) {
         let viewController = StoryboardScene.ExchangeRates.countriesList.instantiate()
-        present(viewController, animated: true, completion: nil)
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
 }

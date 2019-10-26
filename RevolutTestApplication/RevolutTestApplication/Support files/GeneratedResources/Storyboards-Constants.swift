@@ -15,11 +15,13 @@ internal enum StoryboardScene {
   internal enum ExchangeRates: StoryboardType {
     internal static let storyboardName = "ExchangeRates"
 
-    internal static let initialScene = InitialSceneType<RevolutTestApplication.AddPairViewController>(storyboard: ExchangeRates.self)
+    internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: ExchangeRates.self)
 
     internal static let addPair = SceneType<RevolutTestApplication.AddPairViewController>(storyboard: ExchangeRates.self, identifier: "addPair")
 
     internal static let countriesList = SceneType<RevolutTestApplication.CountriesListViewController>(storyboard: ExchangeRates.self, identifier: "countriesList")
+
+    internal static let pairList = SceneType<RevolutTestApplication.PairListViewController>(storyboard: ExchangeRates.self, identifier: "pairList")
   }
   internal enum LaunchScreen: StoryboardType {
     internal static let storyboardName = "LaunchScreen"

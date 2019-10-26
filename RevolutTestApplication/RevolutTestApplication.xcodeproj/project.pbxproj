@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0A28661023644FE100773A5A /* CountryKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A28660F23644FE100773A5A /* CountryKeys.swift */; };
 		0A286612236489E900773A5A /* EntitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A286611236489E900773A5A /* EntitiesManager.swift */; };
+		0A286614236491FE00773A5A /* PairListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A286613236491FE00773A5A /* PairListViewController.swift */; };
+		0A28661723649D5B00773A5A /* PairTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A28661523649D5B00773A5A /* PairTableViewCell.swift */; };
+		0A28661823649D5B00773A5A /* PairTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A28661623649D5B00773A5A /* PairTableViewCell.xib */; };
 		0A7CB772236349E30029FBD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7CB771236349E30029FBD3 /* AppDelegate.swift */; };
 		0A7CB776236349E30029FBD3 /* AddPairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7CB775236349E30029FBD3 /* AddPairViewController.swift */; };
 		0A7CB77B236349E90029FBD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A7CB77A236349E90029FBD3 /* Assets.xcassets */; };
@@ -29,6 +32,9 @@
 /* Begin PBXFileReference section */
 		0A28660F23644FE100773A5A /* CountryKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryKeys.swift; sourceTree = "<group>"; };
 		0A286611236489E900773A5A /* EntitiesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntitiesManager.swift; sourceTree = "<group>"; };
+		0A286613236491FE00773A5A /* PairListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListViewController.swift; sourceTree = "<group>"; };
+		0A28661523649D5B00773A5A /* PairTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairTableViewCell.swift; sourceTree = "<group>"; };
+		0A28661623649D5B00773A5A /* PairTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PairTableViewCell.xib; sourceTree = "<group>"; };
 		0A7CB76E236349E30029FBD3 /* RevolutTestApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RevolutTestApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7CB771236349E30029FBD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A7CB775236349E30029FBD3 /* AddPairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPairViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +150,7 @@
 			children = (
 				0A7CB775236349E30029FBD3 /* AddPairViewController.swift */,
 				0A7CB7932363744D0029FBD3 /* CountriesListViewController.swift */,
+				0A286613236491FE00773A5A /* PairListViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -172,6 +179,8 @@
 			children = (
 				0A7CB7A623637D5D0029FBD3 /* CountriesTableViewCell.swift */,
 				0A7CB7A723637D5D0029FBD3 /* CountriesTableViewCell.xib */,
+				0A28661523649D5B00773A5A /* PairTableViewCell.swift */,
+				0A28661623649D5B00773A5A /* PairTableViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -267,6 +276,7 @@
 				0A7CB77B236349E90029FBD3 /* Assets.xcassets in Resources */,
 				0A7CB79123636B490029FBD3 /* ExchangeRates.storyboard in Resources */,
 				0A7CB7A923637D5D0029FBD3 /* CountriesTableViewCell.xib in Resources */,
+				0A28661823649D5B00773A5A /* PairTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,8 +347,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A28661723649D5B00773A5A /* PairTableViewCell.swift in Sources */,
 				0A286612236489E900773A5A /* EntitiesManager.swift in Sources */,
 				0A7CB7A323637A2D0029FBD3 /* Storyboards-Constants.swift in Sources */,
+				0A286614236491FE00773A5A /* PairListViewController.swift in Sources */,
 				0A7CB7AE23638BA70029FBD3 /* ApiManager.swift in Sources */,
 				0A7CB7A823637D5D0029FBD3 /* CountriesTableViewCell.swift in Sources */,
 				0A7CB776236349E30029FBD3 /* AddPairViewController.swift in Sources */,

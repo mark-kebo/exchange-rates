@@ -11,15 +11,27 @@ import UIKit
 class CountriesListViewController: UIViewController {
     @IBOutlet weak var countriesTableView: UITableView!
     
-    private var countries = EntitiesManager.shared.getCountries()
+    private var countries: [CountryInfo] = []
     private var lastSelectedCountry: CountryInfo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        prepareData()
         countriesTableView.separatorStyle = .none
         countriesTableView.register(cellType: CountriesTableViewCell.self)
         countriesTableView.dataSource = self
         countriesTableView.delegate = self
+    }
+    
+    func prepareData() {
+        CountryKeys.allCases.forEach {
+            let country = CountryInfo()
+            country.name = $0.value
+            country.code = $0.key
+            country.isSelected = false
+            country.pair = nil
+            countries.append(country)
+        }
     }
 }
 
@@ -29,6 +41,9 @@ extension CountriesListViewController: UITableViewDelegate {
         if lastSelectedCountry != nil {
             countries[indexPath.row].pair = lastSelectedCountry
             lastSelectedCountry?.pair = countries[indexPath.row]
+            let viewController = StoryboardScene.ExchangeRates.pairList.instantiate()
+            navigationController?.pushViewController(viewController, animated: true)
+            return
         } else {
             lastSelectedCountry = countries[indexPath.row]
         }
