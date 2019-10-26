@@ -23,6 +23,11 @@ internal enum L10n {
     }
   }
 
+  internal enum Alert {
+    /// Currency pair already exists
+    internal static let currencyPairAlreadyExists = L10n.tr("Localizable", "alert.currencyPairAlreadyExists")
+  }
+
   internal enum Country {
     internal enum Key {
       /// Australian Dollar

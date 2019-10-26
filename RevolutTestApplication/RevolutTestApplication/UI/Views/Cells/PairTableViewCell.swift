@@ -10,16 +10,26 @@ import UIKit
 import Reusable
 
 class PairTableViewCell: UITableViewCell, NibReusable {
-
+    @IBOutlet private weak var firstValueKeyLabel: UILabel!
+    @IBOutlet private weak var resultLabel: UILabel!
+    @IBOutlet private weak var firstValueNameLabel: UILabel!
+    @IBOutlet private weak var secondValueNameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
+}
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+extension PairTableViewCell {
+    public func set(countryInfo: CountryInfo) {
+        firstValueKeyLabel.text = countryInfo.code
+        firstValueNameLabel.text = countryInfo.name
+        if let secondCountryInfo = countryInfo.pair {
+            secondValueNameLabel.text = "\(secondCountryInfo.name) : \(secondCountryInfo.code)"
+        }
+        if let result = countryInfo.result {
+            resultLabel.text = String(result)
+        }
     }
-    
 }

@@ -3,6 +3,9 @@
 "addScreen.button.addPair" = "Add currency pair";
 "addScreen.label.addPair" = "Choose a currency pair to compare their live rates";
 
+//Alerts
+"alert.currencyPairAlreadyExists" = "Currency pair already exists";
+
 // Keys
 "country.key.AUD" = "Australian Dollar";
 "country.key.BGN" = "Bulgarian Lev";

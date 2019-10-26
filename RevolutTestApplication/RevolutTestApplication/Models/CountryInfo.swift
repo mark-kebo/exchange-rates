@@ -13,4 +13,5 @@ class CountryInfo {
     var code: String = ""
     var isSelected: Bool = false
     var pair: CountryInfo? = nil
+    var result: Double? = nil
 }

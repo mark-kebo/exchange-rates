@@ -12,7 +12,10 @@ class CountriesListViewController: UIViewController {
     @IBOutlet weak var countriesTableView: UITableView!
     
     private var countries: [CountryInfo] = []
+    private var selectedPairs: [CountryInfo] = []
     private var lastSelectedCountry: CountryInfo?
+    
+    var callback: ((_ countryInfo: CountryInfo?) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,27 +26,49 @@ class CountriesListViewController: UIViewController {
         countriesTableView.delegate = self
     }
     
-    func prepareData() {
+    private func prepareData() {
         CountryKeys.allCases.forEach {
             let country = CountryInfo()
             country.name = $0.value
             country.code = $0.key
-            country.isSelected = false
-            country.pair = nil
             countries.append(country)
         }
+        countries = countries.sorted(by: { $0.code < $1.code })
+    }
+}
+
+private extension CountriesListViewController {
+    func showAddAlert() {
+        let alert = UIAlertController(title: L10n.Alert.currencyPairAlreadyExists, message: nil, preferredStyle: .alert)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            alert.dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+extension CountriesListViewController {
+    func setSelectedPairs(_ selectedPairs: [CountryInfo]) {
+        self.selectedPairs = selectedPairs
     }
 }
 
 extension CountriesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard !countries[indexPath.row].isSelected else { return }
+        for selectedPair in selectedPairs {
+            if selectedPair.code == lastSelectedCountry?.code && selectedPair.pair?.code == countries[indexPath.row].code {
+                showAddAlert()
+                return
+            }
+        }
         if lastSelectedCountry != nil {
             countries[indexPath.row].pair = lastSelectedCountry
             lastSelectedCountry?.pair = countries[indexPath.row]
-            let viewController = StoryboardScene.ExchangeRates.pairList.instantiate()
-            navigationController?.pushViewController(viewController, animated: true)
-            return
+            dismiss(animated: true, completion: nil)
+            callback?(lastSelectedCountry)
         } else {
             lastSelectedCountry = countries[indexPath.row]
         }

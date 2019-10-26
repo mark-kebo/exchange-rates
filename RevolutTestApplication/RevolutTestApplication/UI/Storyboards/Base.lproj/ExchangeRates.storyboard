@@ -16,16 +16,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ckE-Iu-ThB">
-                                <rect key="frame" x="32" y="296.5" width="311" height="118.5"/>
+                                <rect key="frame" x="32" y="286.5" width="311" height="138.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6v-ko-q02">
-                                        <rect key="frame" x="0.0" y="0.0" width="311" height="40"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="311" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8b-PM-rLZ">
-                                                <rect key="frame" x="135.5" y="0.0" width="40" height="40"/>
+                                                <rect key="frame" x="125.5" y="0.0" width="60" height="60"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="3SD-im-qCh"/>
-                                                    <constraint firstAttribute="height" constant="40" id="YUT-pb-LN0"/>
+                                                    <constraint firstAttribute="width" constant="60" id="3SD-im-qCh"/>
                                                 </constraints>
                                                 <state key="normal" image="Plus"/>
                                                 <connections>
@@ -35,7 +34,7 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="40" id="HAg-9W-Qq9"/>
+                                            <constraint firstAttribute="height" constant="60" id="HAg-9W-Qq9"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Z8b-PM-rLZ" secondAttribute="trailing" constant="16" id="KiC-Ar-O0e"/>
                                             <constraint firstItem="Z8b-PM-rLZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X6v-ko-q02" secondAttribute="leading" constant="16" id="QS6-tC-su9"/>
                                             <constraint firstAttribute="bottom" secondItem="Z8b-PM-rLZ" secondAttribute="bottom" id="j5n-3K-Xrv"/>
@@ -44,7 +43,7 @@
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ea-Ov-Ol0">
-                                        <rect key="frame" x="0.0" y="40" width="311" height="36"/>
+                                        <rect key="frame" x="0.0" y="60" width="311" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="N9b-jS-auL"/>
                                         </constraints>
@@ -57,7 +56,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ah-mk-hJw">
-                                        <rect key="frame" x="0.0" y="76" width="311" height="42.5"/>
+                                        <rect key="frame" x="0.0" y="96" width="311" height="42.5"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="42.5" id="Kbn-Q6-5d1"/>
                                         </constraints>
@@ -149,6 +148,9 @@
                                 <state key="normal" title="-" image="Plus">
                                     <color key="titleColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addPairAction:" destination="i8V-KZ-0wb" eventType="touchUpInside" id="SSi-Kz-gTA"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oeb-pR-oF9">
                                 <rect key="frame" x="0.0" y="84" width="375" height="583"/>

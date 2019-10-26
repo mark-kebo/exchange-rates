@@ -23,11 +23,18 @@ class AddPairViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isToolbarHidden = true
     }
+}
 
+extension AddPairViewController {
     @IBAction func addAction(_ sender: Any) {
         let viewController = StoryboardScene.ExchangeRates.countriesList.instantiate()
-        navigationController?.pushViewController(viewController, animated: true)
+        navigationController?.modalPresentationStyle = .overCurrentContext
+        viewController.callback = { [weak self] countryInfo in
+            let viewController = StoryboardScene.ExchangeRates.pairList.instantiate()
+            viewController.addCountryPair(countryInfo)
+            self?.navigationController?.pushViewController(viewController, animated: true)
+        }
+        present(viewController, animated: true, completion: nil)
     }
-    
 }
 
