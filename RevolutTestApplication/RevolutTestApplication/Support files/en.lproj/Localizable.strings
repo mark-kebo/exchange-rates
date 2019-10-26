@@ -1,0 +1,38 @@
+
+// UI
+"addScreen.button.addPair" = "Add currency pair";
+"addScreen.label.addPair" = "Choose a currency pair to compare their live rates";
+
+// Keys
+"country.key.AUD" = "Australian Dollar";
+"country.key.BGN" = "Bulgarian Lev";
+"country.key.BRL" = "Brazilian Real";
+"country.key.CAD" = "Canada Dollar";
+"country.key.CHF" = "Swiss Franc";
+"country.key.CNY" = "Chinese Yuan";
+"country.key.CZK" = "Czech Koruna";
+"country.key.DKK" = "Danish Krone";
+"country.key.EUR" = "Euro";
+"country.key.GBP" = "Pound Sterling";
+"country.key.HKD" = "Hong Kong Dollar";
+"country.key.HRK" = "Croatian Kuna";
+"country.key.HUF" = "Hungarian Forint";
+"country.key.IDR" = "Indonesian Rupiah";
+"country.key.ILS" = "Israeli Shekel";
+"country.key.INR" = "Indian Rupee";
+"country.key.ISK" = "Icelandic Krona";
+"country.key.JPY" = "Japanese Yen";
+"country.key.KRW" = "South Korean Won";
+"country.key.MXN" = "Mexican Peso";
+"country.key.MYR" = "Malaysian Ringgit";
+"country.key.NOK" = "Norwegian Krone";
+"country.key.NZD" = "New Zealand Dollar";
+"country.key.PHP" = "Philippine Peso";
+"country.key.PLN" = "Polish Zloty";
+"country.key.RON" = "Romanian Leu";
+"country.key.RUB" = "Russian Ruble";
+"country.key.SEK" = "Swedish Krona";
+"country.key.SGD" = "Singapore Dollar";
+"country.key.THB" = "Thai Baht";
+"country.key.USD" = "Dollar US";
+"country.key.ZAR" = "South African Rand";
