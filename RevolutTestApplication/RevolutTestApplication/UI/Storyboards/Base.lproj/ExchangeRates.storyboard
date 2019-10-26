@@ -22,7 +22,11 @@
                                         <rect key="frame" x="0.0" y="0.0" width="311" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8b-PM-rLZ">
-                                                <rect key="frame" x="16" y="0.0" width="279" height="40"/>
+                                                <rect key="frame" x="135.5" y="0.0" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="3SD-im-qCh"/>
+                                                    <constraint firstAttribute="height" constant="40" id="YUT-pb-LN0"/>
+                                                </constraints>
                                                 <state key="normal" image="Plus"/>
                                                 <connections>
                                                     <action selector="addAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ryy-6p-nJd"/>
@@ -32,10 +36,11 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="HAg-9W-Qq9"/>
-                                            <constraint firstAttribute="trailing" secondItem="Z8b-PM-rLZ" secondAttribute="trailing" constant="16" id="KiC-Ar-O0e"/>
-                                            <constraint firstItem="Z8b-PM-rLZ" firstAttribute="leading" secondItem="X6v-ko-q02" secondAttribute="leading" constant="16" id="QS6-tC-su9"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Z8b-PM-rLZ" secondAttribute="trailing" constant="16" id="KiC-Ar-O0e"/>
+                                            <constraint firstItem="Z8b-PM-rLZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="X6v-ko-q02" secondAttribute="leading" constant="16" id="QS6-tC-su9"/>
                                             <constraint firstAttribute="bottom" secondItem="Z8b-PM-rLZ" secondAttribute="bottom" id="j5n-3K-Xrv"/>
                                             <constraint firstItem="Z8b-PM-rLZ" firstAttribute="top" secondItem="X6v-ko-q02" secondAttribute="top" id="kYQ-MN-UYn"/>
+                                            <constraint firstItem="Z8b-PM-rLZ" firstAttribute="centerX" secondItem="X6v-ko-q02" secondAttribute="centerX" id="pcz-NE-ueH"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4ea-Ov-Ol0">
@@ -45,7 +50,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                         <state key="normal">
-                                            <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="addAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ybH-0y-rOH"/>
@@ -63,7 +68,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="ckE-Iu-ThB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="6f9-DM-jlx"/>
                             <constraint firstItem="ckE-Iu-ThB" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Au9-bn-vrr"/>
@@ -138,15 +143,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcW-Uq-D4s">
-                                <rect key="frame" x="16" y="16" width="343" height="40"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                <rect key="frame" x="16" y="16" width="343" height="60"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="18"/>
                                 <inset key="titleEdgeInsets" minX="22" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="-" image="Plus">
-                                    <color key="titleColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" red="0.1803921568627451" green="0.80000000000000004" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Oeb-pR-oF9">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="84" width="375" height="583"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
                         </subviews>
@@ -173,6 +178,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Plus" width="40" height="40"/>
+        <image name="Plus" width="60" height="60"/>
     </resources>
 </document>
