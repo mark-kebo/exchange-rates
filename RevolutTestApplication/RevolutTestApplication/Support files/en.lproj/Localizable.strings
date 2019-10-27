@@ -5,6 +5,9 @@
 
 //Alerts
 "alert.currencyPairAlreadyExists" = "Currency pair already exists";
+"alert.noInternetConnection" = "No Internet connection";
+
+"api default error" = "An error has occurred; try again later";
 
 // Keys
 "country.key.AUD" = "Australian Dollar";

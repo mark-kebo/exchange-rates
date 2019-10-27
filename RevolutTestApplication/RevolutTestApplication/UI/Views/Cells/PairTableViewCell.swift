@@ -23,7 +23,7 @@ class PairTableViewCell: UITableViewCell, NibReusable {
 
 extension PairTableViewCell {
     public func set(countryInfo: CountryInfo) {
-        firstValueKeyLabel.text = countryInfo.code
+        firstValueKeyLabel.text = "1 \(countryInfo.code)"
         firstValueNameLabel.text = countryInfo.name
         if let secondCountryInfo = countryInfo.pair {
             secondValueNameLabel.text = "\(secondCountryInfo.name) : \(secondCountryInfo.code)"

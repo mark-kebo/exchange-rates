@@ -40,8 +40,12 @@ extension PairListViewController {
 
 extension PairListViewController {
     func addCountryPair(_ countryInfo: CountryInfo?) {
-        guard let countryInfo = countryInfo else { return }
+        guard let countryInfo = countryInfo, let pair = countryInfo.pair else { return }
         pairs.append(countryInfo)
+        
+        APIManager.sharedInstance.getCourses(parameters: ["\(countryInfo.code)\(pair.code)"]) { (result, error) in
+            print("-----> \(result?.values)")
+        }
     }
 }
 

@@ -11,6 +11,8 @@ import Foundation
 // swiftlint:disable explicit_type_interface function_parameter_count identifier_name line_length
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
+  /// An error has occurred; try again later
+  internal static let apiDefaultError = L10n.tr("Localizable", "api default error")
 
   internal enum AddScreen {
     internal enum Button {
@@ -26,6 +28,8 @@ internal enum L10n {
   internal enum Alert {
     /// Currency pair already exists
     internal static let currencyPairAlreadyExists = L10n.tr("Localizable", "alert.currencyPairAlreadyExists")
+    /// No Internet connection
+    internal static let noInternetConnection = L10n.tr("Localizable", "alert.noInternetConnection")
   }
 
   internal enum Country {
