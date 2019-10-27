@@ -34,7 +34,7 @@ class APIManager {
 }
 
 extension APIManager: APIManagerProtocol {
-    func sendRequest(url: String, parameters: Parameters?, method: HTTPMethod, encoding: ParameterEncoding = URLEncoding(destination: .queryString), completion: @escaping (Any?, APIError?) -> Void) {
+    func sendRequest(url: String, parameters: Parameters?, method: HTTPMethod, encoding: ParameterEncoding = URLEncoding.default, completion: @escaping (Any?, APIError?) -> Void) {
         guard NetworkManager.sharedInstance.isNetworkReachable() else {
             completion(nil,APIError.noInternetConnection)
             return
@@ -86,9 +86,8 @@ private extension APIManager {
 
 extension APIManager {
     func getCourses(parameters: [String] = [], completion:@escaping ([String: Any]?, APIError?) -> Void) {
-//        let parameters: Parameters = ["pairs": parameters]
-        let parameters: Parameters = ["pairs": ["USDGBP", "GBPPLN"]]
-        sendRequest(url: Constants.apiServer, parameters: parameters, method: .get) { (response, error) in
+        let parameters: Parameters = ["pairs": parameters]
+        sendRequest(url: Constants.apiServer, parameters: parameters, method: .get, encoding: URLEncoding(destination: .queryString, arrayEncoding: .noBrackets, boolEncoding: .literal)) { (response, error) in
             if let error = error {
                 completion(nil,error)
                 return
