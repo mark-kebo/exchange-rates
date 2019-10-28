@@ -10,5 +10,7 @@ import Foundation
 
 enum Constants {
     static let apiServer = "https://europe-west1-revolut-230009.cloudfunctions.net/revolut-ios"
+    
+    static let defaultsKey = "savedCoursesCodes"
 
 }

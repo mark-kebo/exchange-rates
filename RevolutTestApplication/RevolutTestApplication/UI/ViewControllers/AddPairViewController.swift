@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPairViewController: UIViewController {
+class AddPairViewController: BaseViewController {
     @IBOutlet private weak var addPairButton: UIButton!
     @IBOutlet private weak var addPairLabel: UILabel!
         

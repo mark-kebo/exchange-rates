@@ -6,6 +6,9 @@
 //Alerts
 "alert.currencyPairAlreadyExists" = "Currency pair already exists";
 "alert.noInternetConnection" = "No Internet connection";
+"alert.offline.title" = "Offline";
+"alert.info.offline.message" = "Cannot detect your internet connection. Please makes sure you have a valid connection and try again";
+"alert.button.cancel" = "Cancel";
 
 "api default error" = "An error has occurred; try again later";
 

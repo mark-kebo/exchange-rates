@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CountriesListViewController: UIViewController {
+class CountriesListViewController: BaseViewController {
     @IBOutlet weak var countriesTableView: UITableView!
     
     private var countries: [CountryInfo] = []
@@ -27,7 +27,7 @@ class CountriesListViewController: UIViewController {
     }
     
     private func prepareData() {
-        CountryKeys.allCases.forEach {
+        CountryCodes.allCases.forEach {
             let country = CountryInfo()
             country.name = $0.value
             country.code = $0.key

@@ -1,5 +1,5 @@
 //
-//  CountryKeys.swift
+//  CountryCodes.swift
 //  RevolutTestApplication
 //
 //  Created by Dmitry Vorozhbicki on 26/10/2019.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CountryKeys {
+struct CountryCodes {
     static let australianDollar = "AUD"
     static let bulgarianLev = "BGN"
     static let brazilianReal = "BRL"

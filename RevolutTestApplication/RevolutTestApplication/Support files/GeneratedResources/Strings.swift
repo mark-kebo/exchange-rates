@@ -30,6 +30,20 @@ internal enum L10n {
     internal static let currencyPairAlreadyExists = L10n.tr("Localizable", "alert.currencyPairAlreadyExists")
     /// No Internet connection
     internal static let noInternetConnection = L10n.tr("Localizable", "alert.noInternetConnection")
+    internal enum Button {
+      /// Cancel
+      internal static let cancel = L10n.tr("Localizable", "alert.button.cancel")
+    }
+    internal enum Info {
+      internal enum Offline {
+        /// Cannot detect your internet connection. Please makes sure you have a valid connection and try again
+        internal static let message = L10n.tr("Localizable", "alert.info.offline.message")
+      }
+    }
+    internal enum Offline {
+      /// Offline
+      internal static let title = L10n.tr("Localizable", "alert.offline.title")
+    }
   }
 
   internal enum Country {

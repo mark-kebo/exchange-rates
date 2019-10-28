@@ -46,4 +46,8 @@ extension AppDelegate {
     func setupRootViewController() {
         window?.rootViewController = StoryboardScene.ExchangeRates.initialScene.instantiate()
     }
+    
+    func setupPairListViewController() {
+        window?.rootViewController = StoryboardScene.ExchangeRates.pairList.instantiate()
+    }
 }

@@ -8,15 +8,15 @@
 
 import UIKit
 
-class PairListViewController: UIViewController {
+class PairListViewController: BaseViewController {
     
     @IBOutlet private weak var addPairButton: UIButton!
     @IBOutlet private weak var pairsTableView: UITableView!
     
     private var timer: Timer?
-    
-    private var exchangePairs: [CountryInfo] = []
-    private var coursesCodes: [String] = []
+    private let defaults = UserDefaults.standard
+    private let entitiesManager = EntitiesManager.shared
+    private let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,10 @@ class PairListViewController: UIViewController {
         pairsTableView.register(cellType: PairTableViewCell.self)
         pairsTableView.dataSource = self
         pairsTableView.delegate = self
+        
+        if appDelegate?.window?.rootViewController == self {
+            getCourses()
+        }
         
         createTimer()
     }
@@ -39,7 +43,7 @@ extension PairListViewController {
             self?.addCountryPair(countryInfo)
             self?.pairsTableView.reloadData()
         }
-        viewController.setSelectedPairs(exchangePairs)
+        viewController.setSelectedPairs(entitiesManager.exchangePairs)
         present(viewController, animated: true, completion: nil)
     }
 }
@@ -47,10 +51,10 @@ extension PairListViewController {
 // MARK: - Public
 extension PairListViewController {
     func addCountryPair(_ countryInfo: CountryInfo?) {
-        guard let countryInfo = countryInfo, let pair = countryInfo.pair else { return }
-        exchangePairs.append(countryInfo)
-        coursesCodes.append("\(countryInfo.code)\(pair.code)")
+        guard let countryInfo = countryInfo else { return }
+        entitiesManager.exchangePairs.append(countryInfo)
         getCourses()
+        defaults.set(entitiesManager.pairStoreCodes, forKey: Constants.defaultsKey)
     }
 }
 
@@ -62,12 +66,11 @@ extension PairListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            guard let pair = exchangePairs[indexPath.row].pair else { return }
-            coursesCodes = coursesCodes.filter {$0 != "\(exchangePairs[indexPath.row].code)\(pair.code)"}
-            self.exchangePairs.remove(at: indexPath.row)
+            self.entitiesManager.exchangePairs.remove(at: indexPath.row)
+            defaults.set(entitiesManager.pairStoreCodes, forKey: Constants.defaultsKey)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            if exchangePairs.isEmpty {
-                (UIApplication.shared.delegate as? AppDelegate)?.setupRootViewController()
+            if entitiesManager.exchangePairs.isEmpty {
+                appDelegate?.setupRootViewController()
             }
         }
     }
@@ -76,13 +79,13 @@ extension PairListViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 extension PairListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return exchangePairs.count
+        return entitiesManager.exchangePairs.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell =  tableView.dequeueReusableCell(for: indexPath, cellType: PairTableViewCell.self)
         cell.selectionStyle = .none
-        cell.set(countryInfo: exchangePairs[indexPath.row])
+        cell.set(countryInfo: entitiesManager.exchangePairs[indexPath.row])
         return cell
     }
 }
@@ -90,11 +93,11 @@ extension PairListViewController: UITableViewDataSource {
 // MARK: - Request
 private extension PairListViewController {
     func getCourses() {
-        APIManager.sharedInstance.getCourses(parameters: coursesCodes) { [weak self] (result, error) in
+        APIManager.sharedInstance.getCourses(parameters: entitiesManager.pairRequestCodes) { [weak self] (result, error) in
             guard let self = self else { return }
             result?.forEach { course in
                 autoreleasepool {
-                    self.exchangePairs.forEach { exchangePair in
+                    self.entitiesManager.exchangePairs.forEach { exchangePair in
                         guard let pair = exchangePair.pair else { return }
                         if course.key == "\(exchangePair.code)\(pair.code)" {
                             exchangePair.result = course.value as? Double
@@ -108,7 +111,7 @@ private extension PairListViewController {
                 }
                 for indexPath in visibleRowsIndexPaths {
                     if let cell = pairsTableView.cellForRow(at: indexPath) as? PairTableViewCell {
-                        cell.set(result: self.exchangePairs[indexPath.row].result)
+                        cell.set(result: self.entitiesManager.exchangePairs[indexPath.row].result)
                     }
                 }
             }

@@ -12,7 +12,27 @@ class EntitiesManager {
     
     static let shared = EntitiesManager()
     
-    private init() {
+    var exchangePairs: [CountryInfo] = []
+    
+    var pairRequestCodes: [String] {
+        var codes: [String] = []
+        exchangePairs.forEach {
+            if let code = $0.pairRequestCode {
+                codes.append(code)
+            }
+        }
+        return codes
     }
     
+    var pairStoreCodes: [String] {
+        var codes: [String] = []
+        exchangePairs.forEach {
+            if let code = $0.pairStoreCode {
+                codes.append(code)
+            }
+        }
+        return codes
+    }
+
+    private init() { }
 }
