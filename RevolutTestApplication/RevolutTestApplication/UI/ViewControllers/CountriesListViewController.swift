@@ -60,22 +60,26 @@ extension CountriesListViewController {
 // MARK: - UITableViewDelegate
 extension CountriesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard !countries[indexPath.row].isSelected else { return }
         for selectedPair in selectedPairs {
             if selectedPair.code == lastSelectedCountry?.code && selectedPair.pair?.code == countries[indexPath.row].code {
                 showAddAlert()
                 return
             }
         }
-        if lastSelectedCountry != nil {
-            countries[indexPath.row].pair = lastSelectedCountry
-            lastSelectedCountry?.pair = countries[indexPath.row]
-            dismiss(animated: true, completion: nil)
-            callback?(lastSelectedCountry)
+        if !countries[indexPath.row].isSelected {
+            if lastSelectedCountry != nil {
+                countries[indexPath.row].pair = lastSelectedCountry
+                lastSelectedCountry?.pair = countries[indexPath.row]
+                dismiss(animated: true, completion: nil)
+                callback?(lastSelectedCountry)
+            } else {
+                lastSelectedCountry = countries[indexPath.row]
+            }
+            countries[indexPath.row].isSelected = true
         } else {
-            lastSelectedCountry = countries[indexPath.row]
+            countries[indexPath.row].isSelected = false
+            lastSelectedCountry = nil
         }
-        countries[indexPath.row].isSelected = true
         countriesTableView.reloadRows(at: [indexPath], with: .top)
     }
 }
