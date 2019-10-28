@@ -22,13 +22,19 @@ class PairTableViewCell: UITableViewCell, NibReusable {
 }
 
 extension PairTableViewCell {
-    public func set(countryInfo: CountryInfo) {
+    func set(countryInfo: CountryInfo) {
         firstValueKeyLabel.text = "1 \(countryInfo.code)"
         firstValueNameLabel.text = countryInfo.name
         if let secondCountryInfo = countryInfo.pair {
             secondValueNameLabel.text = "\(secondCountryInfo.name) : \(secondCountryInfo.code)"
         }
         if let result = countryInfo.result {
+            resultLabel.text = String(result)
+        }
+    }
+    
+    func set(result: Double?) {
+        if let result = result {
             resultLabel.text = String(result)
         }
     }

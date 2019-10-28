@@ -41,3 +41,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 }
 
+//MARK: - Root Controller
+extension AppDelegate {
+    func setupRootViewController() {
+        window?.rootViewController = StoryboardScene.ExchangeRates.initialScene.instantiate()
+    }
+}

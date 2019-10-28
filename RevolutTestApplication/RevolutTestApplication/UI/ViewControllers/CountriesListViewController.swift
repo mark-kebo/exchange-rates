@@ -37,6 +37,7 @@ class CountriesListViewController: UIViewController {
     }
 }
 
+// MARK: - Alert
 private extension CountriesListViewController {
     func showAddAlert() {
         let alert = UIAlertController(title: L10n.Alert.currencyPairAlreadyExists, message: nil, preferredStyle: .alert)
@@ -49,12 +50,14 @@ private extension CountriesListViewController {
     }
 }
 
+// MARK: - Public
 extension CountriesListViewController {
     func setSelectedPairs(_ selectedPairs: [CountryInfo]) {
         self.selectedPairs = selectedPairs
     }
 }
 
+// MARK: - UITableViewDelegate
 extension CountriesListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard !countries[indexPath.row].isSelected else { return }
@@ -77,6 +80,7 @@ extension CountriesListViewController: UITableViewDelegate {
     }
 }
 
+// MARK: - UITableViewDataSource
 extension CountriesListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countries.count

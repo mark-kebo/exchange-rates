@@ -25,6 +25,7 @@ class AddPairViewController: UIViewController {
     }
 }
 
+// MARK: - Actions
 extension AddPairViewController {
     @IBAction func addAction(_ sender: Any) {
         let viewController = StoryboardScene.ExchangeRates.countriesList.instantiate()

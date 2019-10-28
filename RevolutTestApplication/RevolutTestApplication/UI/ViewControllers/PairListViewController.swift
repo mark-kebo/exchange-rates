@@ -13,6 +13,8 @@ class PairListViewController: UIViewController {
     @IBOutlet private weak var addPairButton: UIButton!
     @IBOutlet private weak var pairsTableView: UITableView!
     
+    private var timer: Timer?
+    
     private var exchangePairs: [CountryInfo] = []
     private var coursesCodes: [String] = []
     
@@ -23,9 +25,12 @@ class PairListViewController: UIViewController {
         pairsTableView.register(cellType: PairTableViewCell.self)
         pairsTableView.dataSource = self
         pairsTableView.delegate = self
+        
+        createTimer()
     }
 }
 
+// MARK: - Actions
 extension PairListViewController {
     @IBAction func addPairAction(_ sender: Any) {
         let viewController = StoryboardScene.ExchangeRates.countriesList.instantiate()
@@ -39,6 +44,7 @@ extension PairListViewController {
     }
 }
 
+// MARK: - Public
 extension PairListViewController {
     func addCountryPair(_ countryInfo: CountryInfo?) {
         guard let countryInfo = countryInfo, let pair = countryInfo.pair else { return }
@@ -48,6 +54,7 @@ extension PairListViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
 extension PairListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
@@ -55,18 +62,18 @@ extension PairListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            for index in 0...coursesCodes.count - 1 {
-                guard let pair = exchangePairs[indexPath.row].pair else { return }
-                if coursesCodes[index] == "\(exchangePairs[indexPath.row].code)\(pair.code)" {
-                    coursesCodes.remove(at: index)
-                }
-            }
+            guard let pair = exchangePairs[indexPath.row].pair else { return }
+            coursesCodes = coursesCodes.filter {$0 != "\(exchangePairs[indexPath.row].code)\(pair.code)"}
             self.exchangePairs.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            if exchangePairs.isEmpty {
+                (UIApplication.shared.delegate as? AppDelegate)?.setupRootViewController()
+            }
         }
     }
 }
 
+// MARK: - UITableViewDataSource
 extension PairListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return exchangePairs.count
@@ -80,9 +87,9 @@ extension PairListViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - Request
 private extension PairListViewController {
     func getCourses() {
-        print(coursesCodes)
         APIManager.sharedInstance.getCourses(parameters: coursesCodes) { [weak self] (result, error) in
             guard let self = self else { return }
             result?.forEach { course in
@@ -96,8 +103,32 @@ private extension PairListViewController {
                 }
             }
             if let pairsTableView = self.pairsTableView {
-                pairsTableView.reloadData()
+                guard let visibleRowsIndexPaths = pairsTableView.indexPathsForVisibleRows else {
+                    return
+                }
+                for indexPath in visibleRowsIndexPaths {
+                    if let cell = pairsTableView.cellForRow(at: indexPath) as? PairTableViewCell {
+                        cell.set(result: self.exchangePairs[indexPath.row].result)
+                    }
+                }
             }
         }
+    }
+}
+
+// MARK: - Timer
+private extension PairListViewController {
+    func createTimer() {
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 1.0,
+                                         target: self,
+                                         selector: #selector(updateTimer),
+                                         userInfo: nil,
+                                         repeats: true)
+        }
+    }
+    
+    @objc func updateTimer() {
+        getCourses()
     }
 }
