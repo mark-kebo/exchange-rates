@@ -36,8 +36,8 @@ fileprivate extension SplashScreenViewController {
         savedCodes.forEach {
             let pairCodesArray = $0.components(separatedBy: ":")
             if pairCodesArray.count == 2 {
-                let countryInfo = CountryInfo(code: pairCodesArray[0])
-                countryInfo.pair = CountryInfo(code: pairCodesArray[1])
+                let countryInfo = CountryInfo(code: CountryCodes.init(rawValue: pairCodesArray[0]))
+                countryInfo.pair = CountryInfo(code: CountryCodes.init(rawValue: pairCodesArray[1]))
                 entitiesManager.exchangePairs.append(countryInfo)
             }
         }

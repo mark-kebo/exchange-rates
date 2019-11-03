@@ -65,7 +65,9 @@ extension PairListViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard indexPath.row < self.entitiesManager.exchangePairs.count else { return }
         if editingStyle == .delete {
+            self.entitiesManager.exchangePairs[indexPath.row].pair = nil
             self.entitiesManager.exchangePairs.remove(at: indexPath.row)
             defaults.set(entitiesManager.pairStoreCodes, forKey: Constants.defaultsKey)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -95,23 +97,27 @@ private extension PairListViewController {
     func getCourses() {
         APIManager.sharedInstance.getCourses(parameters: entitiesManager.pairRequestCodes) { [weak self] (result, error) in
             guard let self = self else { return }
-            result?.forEach { course in
-                autoreleasepool {
-                    self.entitiesManager.exchangePairs.forEach { exchangePair in
-                        guard let pair = exchangePair.pair else { return }
-                        if course.key == "\(exchangePair.code)\(pair.code)" {
-                            exchangePair.result = course.value as? Double
+            if let error = error {
+                self.showError(title: nil, message: error.localizedDescription)
+            } else {
+                result?.forEach { course in
+                    autoreleasepool {
+                        self.entitiesManager.exchangePairs.forEach { exchangePair in
+                            guard let exPair = exchangePair.code?.rawValue, let pair = exchangePair.pair?.code?.rawValue else { return }
+                            if course.key == "\(exPair)\(pair)" {
+                                exchangePair.result = course.value as? Double
+                            }
                         }
                     }
                 }
-            }
-            if let pairsTableView = self.pairsTableView {
-                guard let visibleRowsIndexPaths = pairsTableView.indexPathsForVisibleRows else {
-                    return
-                }
-                for indexPath in visibleRowsIndexPaths {
-                    if let cell = pairsTableView.cellForRow(at: indexPath) as? PairTableViewCell {
-                        cell.set(result: self.entitiesManager.exchangePairs[indexPath.row].result)
+                if let pairsTableView = self.pairsTableView {
+                    guard let visibleRowsIndexPaths = pairsTableView.indexPathsForVisibleRows else {
+                        return
+                    }
+                    for indexPath in visibleRowsIndexPaths {
+                        if let cell = pairsTableView.cellForRow(at: indexPath) as? PairTableViewCell {
+                            cell.set(result: self.entitiesManager.exchangePairs[indexPath.row].result)
+                        }
                     }
                 }
             }

@@ -23,7 +23,7 @@ class CountriesTableViewCell: UITableViewCell, NibReusable {
 
 extension CountriesTableViewCell {
     public func set(countryInfo: CountryInfo) {
-        codeLabel.text = countryInfo.code
+        codeLabel.text = countryInfo.code?.rawValue
         nameLabel.text = countryInfo.name
         selectedImageView.isHidden = !countryInfo.isSelected
     }

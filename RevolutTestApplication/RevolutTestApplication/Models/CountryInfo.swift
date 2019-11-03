@@ -10,25 +10,26 @@ import Foundation
 
 class CountryInfo {
     var name: String = ""
-    var code: String = ""
+    var code: CountryCodes? = nil
     var isSelected: Bool = false
     var pair: CountryInfo? = nil
     var result: Double? = nil
     
     init() { }
     
-    init(code: String) {
-        name = CountryCodes.allCases.first(where: { $0.key == code })?.value ?? ""
+    init(code: CountryCodes?) {
+        guard let code = code else { return }
+        name = CountryCodes.allCases.first(where: { $0.key == code.rawValue })?.value ?? ""
         self.code = code
     }
     
     var pairRequestCode: String? {
-        guard let pair = pair, !code.isEmpty else { return nil }
-        return "\(code)\(pair.code)"
+        guard let code = code, let pairCode = pair?.code, !pairCode.rawValue.isEmpty, !code.rawValue.isEmpty else { return nil }
+        return "\(code)\(pairCode)"
     }
     
     var pairStoreCode: String? {
-        guard let pair = pair, !code.isEmpty else { return nil }
-        return "\(code):\(pair.code)"
+        guard let code = code, let pairCode = pair?.code, !pairCode.rawValue.isEmpty, !code.rawValue.isEmpty else { return nil }
+        return "\(code):\(pairCode)"
     }
 }

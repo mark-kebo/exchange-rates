@@ -28,12 +28,13 @@ class CountriesListViewController: BaseViewController {
     
     private func prepareData() {
         CountryCodes.allCases.forEach {
-            let country = CountryInfo()
-            country.name = $0.value
-            country.code = $0.key
+            let country = CountryInfo(code: CountryCodes(rawValue: $0.key))
             countries.append(country)
         }
-        countries = countries.sorted(by: { $0.code < $1.code })
+        countries = countries.sorted(by: {
+            guard let firstCode = $0.code?.rawValue, let secondCode = $1.code?.rawValue else { return false }
+            return firstCode < secondCode
+        })
     }
 }
 

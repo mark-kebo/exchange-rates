@@ -22,6 +22,13 @@ class BaseViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func showError(title: String?, message: String?) {
+        let alert = UIAlertController(title:title, message: message, preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: L10n.Alert.Button.cancel, style: .default, handler: nil)
+        alert.addAction(cancelAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
     func networkStartMonitoring() {
         NetworkManager.sharedInstance.connectionChanged = { status in
             switch status {
