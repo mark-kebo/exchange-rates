@@ -17,11 +17,11 @@ internal enum StoryboardScene {
 
     internal static let initialScene = InitialSceneType<UIKit.UINavigationController>(storyboard: ExchangeRates.self)
 
-    internal static let addPair = SceneType<CurrencyExchange.AddPairViewController>(storyboard: ExchangeRates.self, identifier: "addPair")
+    internal static let addPair = SceneType<Currency_Exchange.AddPairViewController>(storyboard: ExchangeRates.self, identifier: "addPair")
 
-    internal static let countriesList = SceneType<CurrencyExchange.CountriesListViewController>(storyboard: ExchangeRates.self, identifier: "countriesList")
+    internal static let countriesList = SceneType<Currency_Exchange.CountriesListViewController>(storyboard: ExchangeRates.self, identifier: "countriesList")
 
-    internal static let pairList = SceneType<CurrencyExchange.PairListViewController>(storyboard: ExchangeRates.self, identifier: "pairList")
+    internal static let pairList = SceneType<Currency_Exchange.PairListViewController>(storyboard: ExchangeRates.self, identifier: "pairList")
   }
   internal enum LaunchScreen: StoryboardType {
     internal static let storyboardName = "LaunchScreen"
@@ -31,7 +31,7 @@ internal enum StoryboardScene {
   internal enum SplashScreen: StoryboardType {
     internal static let storyboardName = "SplashScreen"
 
-    internal static let initialScene = InitialSceneType<CurrencyExchange.SplashScreenViewController>(storyboard: SplashScreen.self)
+    internal static let initialScene = InitialSceneType<Currency_Exchange.SplashScreenViewController>(storyboard: SplashScreen.self)
   }
 }
 // swiftlint:enable explicit_type_interface identifier_name line_length type_body_length type_name

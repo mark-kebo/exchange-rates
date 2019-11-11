@@ -52,7 +52,7 @@
 		0A286613236491FE00773A5A /* PairListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairListViewController.swift; sourceTree = "<group>"; };
 		0A28661523649D5B00773A5A /* PairTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairTableViewCell.swift; sourceTree = "<group>"; };
 		0A28661623649D5B00773A5A /* PairTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PairTableViewCell.xib; sourceTree = "<group>"; };
-		0A7CB76E236349E30029FBD3 /* CurrencyExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A7CB76E236349E30029FBD3 /* Currency Exchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Currency Exchange.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7CB771236349E30029FBD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A7CB775236349E30029FBD3 /* AddPairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPairViewController.swift; sourceTree = "<group>"; };
 		0A7CB77A236349E90029FBD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -126,7 +126,7 @@
 		0A7CB76F236349E30029FBD3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0A7CB76E236349E30029FBD3 /* CurrencyExchange.app */,
+				0A7CB76E236349E30029FBD3 /* Currency Exchange.app */,
 				0A8102622367788E002C94E2 /* CurrencyExchangeTests.xctest */,
 			);
 			name = Products;
@@ -292,7 +292,7 @@
 			);
 			name = CurrencyExchange;
 			productName = RevolutTestApplication;
-			productReference = 0A7CB76E236349E30029FBD3 /* CurrencyExchange.app */;
+			productReference = 0A7CB76E236349E30029FBD3 /* Currency Exchange.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0A8102612367788E002C94E2 /* CurrencyExchangeTests */ = {
@@ -634,7 +634,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmitry.vorozhbicki.CurrencyExchange;
-				PRODUCT_NAME = CurrencyExchange;
+				PRODUCT_NAME = "Currency Exchange";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -653,7 +653,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.dmitry.vorozhbicki.CurrencyExchange;
-				PRODUCT_NAME = CurrencyExchange;
+				PRODUCT_NAME = "Currency Exchange";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
