@@ -29,7 +29,7 @@
 		0A81025823672AFA002C94E2 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A81025723672AFA002C94E2 /* SplashScreen.storyboard */; };
 		0A81025A23672B25002C94E2 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A81025923672B25002C94E2 /* SplashScreenViewController.swift */; };
 		0A81025C236732FD002C94E2 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A81025B236732FD002C94E2 /* BaseViewController.swift */; };
-		0A8102652367788E002C94E2 /* RevolutTestApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8102642367788E002C94E2 /* RevolutTestApplicationTests.swift */; };
+		0A8102652367788E002C94E2 /* CurrencyExchangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8102642367788E002C94E2 /* CurrencyExchangeTests.swift */; };
 		0A982FD72364F72C0082E142 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A982FD62364F72C0082E142 /* Constants.swift */; };
 		0A982FD92364FB0F0082E142 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A982FD82364FB0F0082E142 /* APIError.swift */; };
 		0A982FDB2364FBDA0082E142 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A982FDA2364FBDA0082E142 /* NetworkManager.swift */; };
@@ -72,7 +72,7 @@
 		0A81025923672B25002C94E2 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		0A81025B236732FD002C94E2 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		0A8102622367788E002C94E2 /* CurrencyExchangeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyExchangeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A8102642367788E002C94E2 /* RevolutTestApplicationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RevolutTestApplicationTests.swift; sourceTree = "<group>"; };
+		0A8102642367788E002C94E2 /* CurrencyExchangeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyExchangeTests.swift; sourceTree = "<group>"; };
 		0A8102662367788E002C94E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A982FD62364F72C0082E142 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0A982FD82364FB0F0082E142 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 		0A8102632367788E002C94E2 /* CurrencyExchangeTests */ = {
 			isa = PBXGroup;
 			children = (
-				0A8102642367788E002C94E2 /* RevolutTestApplicationTests.swift */,
+				0A8102642367788E002C94E2 /* CurrencyExchangeTests.swift */,
 				0A8102662367788E002C94E2 /* Info.plist */,
 			);
 			path = CurrencyExchangeTests;
@@ -465,7 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A8102652367788E002C94E2 /* RevolutTestApplicationTests.swift in Sources */,
+				0A8102652367788E002C94E2 /* CurrencyExchangeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
