@@ -1,0 +1,32 @@
+PODS:
+  - Alamofire (4.9.0)
+  - IQKeyboardManagerSwift (6.5.1)
+  - Reusable (4.1.0):
+    - Reusable/Storyboard (= 4.1.0)
+    - Reusable/View (= 4.1.0)
+  - Reusable/Storyboard (4.1.0)
+  - Reusable/View (4.1.0)
+  - SwiftGen (6.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - IQKeyboardManagerSwift
+  - Reusable
+  - SwiftGen
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - IQKeyboardManagerSwift
+    - Reusable
+    - SwiftGen
+
+SPEC CHECKSUMS:
+  Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
+  IQKeyboardManagerSwift: 9ac7524fad9f9fe9a3b98c927e7772471ca546d2
+  Reusable: 82be188f29d96dc5eff0db7b2393bcc08d2cdd5b
+  SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
+
+PODFILE CHECKSUM: bb3e030480c4e637ceb365691d40eeece76b6888
+
+COCOAPODS: 1.8.3
