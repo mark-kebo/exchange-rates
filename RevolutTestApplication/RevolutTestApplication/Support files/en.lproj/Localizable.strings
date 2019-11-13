@@ -10,7 +10,7 @@
 "alert.info.offline.message" = "Cannot detect your internet connection. Please makes sure you have a valid connection and try again";
 "alert.button.cancel" = "Cancel";
 
-"api default error" = "An error has occurred; try again later";
+"api.default.error" = "An error has occurred; try again later";
 
 // Keys
 "country.key.AUD" = "Australian Dollar";

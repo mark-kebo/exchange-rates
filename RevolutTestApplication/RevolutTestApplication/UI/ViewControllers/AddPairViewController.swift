@@ -15,8 +15,8 @@ class AddPairViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.setNavigationBarHidden(true, animated: false)
-        addPairLabel.text = L10n.AddScreen.Label.addPair
-        addPairButton.setTitle(L10n.AddScreen.Button.addPair, for: .normal)
+        addPairLabel.text = NSLocalizedString("addScreen.label.addPair", comment: "")
+        addPairButton.setTitle(NSLocalizedString("addScreen.button.addPair", comment: ""), for: .normal)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,14 +28,16 @@ class AddPairViewController: BaseViewController {
 // MARK: - Actions
 extension AddPairViewController {
     @IBAction func addAction(_ sender: Any) {
-        let viewController = StoryboardScene.ExchangeRates.countriesList.instantiate()
-        navigationController?.modalPresentationStyle = .overCurrentContext
-        viewController.callback = { [weak self] countryInfo in
-            let viewController = StoryboardScene.ExchangeRates.pairList.instantiate()
-            viewController.addCountryPair(countryInfo)
-            self?.navigationController?.pushViewController(viewController, animated: true)
+        if let viewController = UIStoryboard(name: "ExchangeRates", bundle: nil).instantiateViewController(identifier: "CountriesListViewController") as? CountriesListViewController {
+            navigationController?.modalPresentationStyle = .overCurrentContext
+            viewController.callback = { [weak self] countryInfo in
+                if let viewController = UIStoryboard(name: "ExchangeRates", bundle: nil).instantiateViewController(identifier: "PairListViewController") as? PairListViewController {
+                    viewController.addCountryPair(countryInfo)
+                    self?.navigationController?.pushViewController(viewController, animated: true)
+                }
+            }
+            present(viewController, animated: true, completion: nil)
         }
-        present(viewController, animated: true, completion: nil)
     }
 }
 

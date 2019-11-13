@@ -21,9 +21,10 @@ class CountriesListViewController: BaseViewController {
         super.viewDidLoad()
         prepareData()
         countriesTableView.separatorStyle = .none
-        countriesTableView.register(cellType: CountriesTableViewCell.self)
         countriesTableView.dataSource = self
         countriesTableView.delegate = self
+        let cell = UINib(nibName: "CountriesTableViewCell", bundle: nil)
+        countriesTableView.register(cell, forCellReuseIdentifier: "CountriesTableViewCell")
     }
     
     private func prepareData() {
@@ -41,7 +42,7 @@ class CountriesListViewController: BaseViewController {
 // MARK: - Alert
 private extension CountriesListViewController {
     func showAddAlert() {
-        let alert = UIAlertController(title: L10n.Alert.currencyPairAlreadyExists, message: nil, preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString("alert.currencyPairAlreadyExists", comment: ""), message: nil, preferredStyle: .alert)
         DispatchQueue.main.async {
             self.present(alert, animated: true, completion: nil)
         }
@@ -92,7 +93,7 @@ extension CountriesListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(for: indexPath, cellType: CountriesTableViewCell.self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CountriesTableViewCell", for: indexPath) as! CountriesTableViewCell
         cell.selectionStyle = .none
         cell.set(countryInfo: countries[indexPath.row])
         return cell

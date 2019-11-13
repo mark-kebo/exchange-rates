@@ -20,31 +20,42 @@ class PairListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        addPairButton.setTitle(L10n.AddScreen.Button.addPair, for: .normal)
+        addPairButton.setTitle(NSLocalizedString("addScreen.button.addPair", comment: ""), for: .normal)
         pairsTableView.separatorStyle = .none
-        pairsTableView.register(cellType: PairTableViewCell.self)
         pairsTableView.dataSource = self
         pairsTableView.delegate = self
+        
+        let cell = UINib(nibName: "PairTableViewCell", bundle: nil)
+        pairsTableView.register(cell, forCellReuseIdentifier: "PairTableViewCell")
         
         if appDelegate?.window?.rootViewController == self {
             getCourses()
         }
-        
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         createTimer()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        stopTimer()
     }
 }
 
 // MARK: - Actions
 extension PairListViewController {
     @IBAction func addPairAction(_ sender: Any) {
-        let viewController = StoryboardScene.ExchangeRates.countriesList.instantiate()
-        navigationController?.modalPresentationStyle = .overCurrentContext
-        viewController.callback = { [weak self] countryInfo in
-            self?.addCountryPair(countryInfo)
-            self?.pairsTableView.reloadData()
+        if let viewController = UIStoryboard(name: "ExchangeRates", bundle: nil).instantiateViewController(identifier: "CountriesListViewController") as? CountriesListViewController {
+            navigationController?.modalPresentationStyle = .overCurrentContext
+            viewController.callback = { [weak self] countryInfo in
+                self?.addCountryPair(countryInfo)
+                self?.pairsTableView.reloadData()
+            }
+            viewController.setSelectedPairs(entitiesManager.exchangePairs)
+            present(viewController, animated: true, completion: nil)
         }
-        viewController.setSelectedPairs(entitiesManager.exchangePairs)
-        present(viewController, animated: true, completion: nil)
     }
 }
 
@@ -85,7 +96,7 @@ extension PairListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =  tableView.dequeueReusableCell(for: indexPath, cellType: PairTableViewCell.self)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PairTableViewCell", for: indexPath) as! PairTableViewCell
         cell.selectionStyle = .none
         cell.set(countryInfo: entitiesManager.exchangePairs[indexPath.row])
         return cell
@@ -135,6 +146,11 @@ private extension PairListViewController {
                                          userInfo: nil,
                                          repeats: true)
         }
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
     }
     
     @objc func updateTimer() {

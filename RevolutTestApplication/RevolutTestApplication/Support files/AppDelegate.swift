@@ -44,10 +44,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //MARK: - Root Controller
 extension AppDelegate {
     func setupRootViewController() {
-        window?.rootViewController = StoryboardScene.ExchangeRates.initialScene.instantiate()
+        window?.rootViewController = UIStoryboard(name: "ExchangeRates", bundle: nil).instantiateInitialViewController()
     }
     
     func setupPairListViewController() {
-        window?.rootViewController = StoryboardScene.ExchangeRates.pairList.instantiate()
+        window?.rootViewController = UIStoryboard(name: "ExchangeRates", bundle: nil).instantiateViewController(identifier: "PairListViewController")
     }
 }

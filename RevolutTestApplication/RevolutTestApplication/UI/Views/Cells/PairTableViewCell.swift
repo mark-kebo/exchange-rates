@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Reusable
 
-class PairTableViewCell: UITableViewCell, NibReusable {
+class PairTableViewCell: UITableViewCell {
     @IBOutlet private weak var firstValueKeyLabel: UILabel!
     @IBOutlet private weak var resultLabel: UILabel!
     @IBOutlet private weak var firstValueNameLabel: UILabel!

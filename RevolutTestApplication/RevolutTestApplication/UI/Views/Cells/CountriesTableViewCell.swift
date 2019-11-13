@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Reusable
 
-class CountriesTableViewCell: UITableViewCell, NibReusable {
+class CountriesTableViewCell: UITableViewCell {
     @IBOutlet private weak var codeLabel: UILabel!
     @IBOutlet private weak var nameLabel: UILabel!
     @IBOutlet private weak var selectedImageView: UIImageView!

@@ -25,7 +25,7 @@ enum APIError: Error {
         case .jsonParsingFailure: return "JSON Parsing Failure"
         case .jsonConversionFailure: return "JSON Conversion Failure"
         case .other(let message): return message ?? ""
-        case .noInternetConnection: return L10n.Alert.noInternetConnection
+        case .noInternetConnection: return NSLocalizedString("alert.noInternetConnection", comment: "")
         }
     }
 }
