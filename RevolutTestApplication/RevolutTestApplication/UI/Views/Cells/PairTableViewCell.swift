@@ -10,7 +10,7 @@ import UIKit
 
 class PairTableViewCell: UITableViewCell {
     @IBOutlet private weak var firstValueKeyLabel: UILabel!
-    @IBOutlet private weak var resultLabel: UILabel!
+    @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet private weak var firstValueNameLabel: UILabel!
     @IBOutlet private weak var secondValueNameLabel: UILabel!
     

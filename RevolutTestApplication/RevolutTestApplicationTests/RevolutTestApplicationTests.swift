@@ -12,6 +12,7 @@ import XCTest
 class RevolutTestApplicationTests: XCTestCase {
     var entitiesManager = EntitiesManager.shared
     var countriesUnderTest: [CountryInfo] = []
+    let codes: [String] = ["USDGBP", "GBPUSD"]
 
     override func setUp() {
         super.setUp()
@@ -28,9 +29,10 @@ class RevolutTestApplicationTests: XCTestCase {
     func testGetCoursesApiResponse() {
         let ex = expectation(description: "Expecting a JSON data not nil")
         
-        APIManager.sharedInstance.getCourses(parameters: entitiesManager.pairRequestCodes) { (result, error) in
+        APIManager.sharedInstance.getCourses(parameters: codes) { (result, error) in
             XCTAssertNil(error)
             XCTAssertNotNil(result)
+            XCTAssert(self.codes.count == result?.count)
             ex.fulfill()
         }
         
@@ -61,16 +63,43 @@ class RevolutTestApplicationTests: XCTestCase {
     
 
     func testCurrencyRateDidChange() {
-        let pair = CountryInfo(code: .BGN)
-        let newRate: Double = 100
-        pair.result = newRate
-        XCTAssert(pair.result == newRate)
+        let vc = PairListViewController()
+        let newResult: Double = 200
+        vc.viewDidLoad()
+        if let pairsTableView = vc.pairsTableView {
+            guard let visibleRowsIndexPaths = pairsTableView.indexPathsForVisibleRows else {
+                return
+            }
+            for indexPath in visibleRowsIndexPaths {
+                if let cell = pairsTableView.cellForRow(at: indexPath) as? PairTableViewCell {
+                    cell.set(result: newResult)
+                    XCTAssert(String(newResult) == cell.resultLabel.text)
+                }
+            }
+        }
     }
 
     func testAddNewPair() {
+        let currentCount = entitiesManager.exchangePairs.count
         let mainCode = CountryInfo(code: .BGN)
         let secondCode = CountryInfo(code: .CZK)
         mainCode.pair = secondCode
+        entitiesManager.exchangePairs.append(mainCode)
         XCTAssertNotNil(mainCode.pair)
+        XCTAssert(currentCount + 1 == entitiesManager.exchangePairs.count)
+    }
+    
+    func testDeletePair() {
+        let currentCount = entitiesManager.exchangePairs.count
+        let mainCode = CountryInfo(code: .BGN)
+        let secondCode = CountryInfo(code: .CZK)
+        mainCode.pair = secondCode
+        entitiesManager.exchangePairs.append(mainCode)
+        XCTAssert(currentCount + 1 == entitiesManager.exchangePairs.count)
+        self.entitiesManager.exchangePairs.last?.pair = nil
+        self.entitiesManager.exchangePairs.remove(at: self.entitiesManager.exchangePairs.count - 1)
+        XCTAssertNil(mainCode.pair)
+        XCTAssert(currentCount == entitiesManager.exchangePairs.count)
+
     }
 }

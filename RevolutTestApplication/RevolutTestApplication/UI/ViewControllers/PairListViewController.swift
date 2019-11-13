@@ -10,16 +10,23 @@ import UIKit
 
 class PairListViewController: BaseViewController {
     
-    @IBOutlet private weak var addPairButton: UIButton!
-    @IBOutlet private weak var pairsTableView: UITableView!
+    @IBOutlet weak var addPairButton: UIButton!
+    @IBOutlet weak var pairsTableView: UITableView!
     
     private var timer: Timer?
     private let defaults = UserDefaults.standard
-    private let entitiesManager = EntitiesManager.shared
+    let entitiesManager = EntitiesManager.shared
     private let appDelegate = UIApplication.shared.delegate as? AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if appDelegate?.window?.rootViewController == self {
+            getCourses()
+        }
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         addPairButton.setTitle(NSLocalizedString("addScreen.button.addPair", comment: ""), for: .normal)
         pairsTableView.separatorStyle = .none
         pairsTableView.dataSource = self
@@ -28,13 +35,6 @@ class PairListViewController: BaseViewController {
         let cell = UINib(nibName: "PairTableViewCell", bundle: nil)
         pairsTableView.register(cell, forCellReuseIdentifier: "PairTableViewCell")
         
-        if appDelegate?.window?.rootViewController == self {
-            getCourses()
-        }
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         createTimer()
     }
     
@@ -104,7 +104,7 @@ extension PairListViewController: UITableViewDataSource {
 }
 
 // MARK: - Request
-private extension PairListViewController {
+extension PairListViewController {
     func getCourses() {
         APIManager.sharedInstance.getCourses(parameters: entitiesManager.pairRequestCodes) { [weak self] (result, error) in
             guard let self = self else { return }
